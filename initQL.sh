@@ -21,3 +21,8 @@ iptables -A INPUT -p tcp --dport 20000:30000 -j ACCEPT
 #邮件服务器,开启25,110端口.
 iptables -A INPUT -p tcp --dport 110 -j ACCEPT
 iptables -A INPUT -p tcp --dport 25 -j ACCEPT
+#开启Transmission管理端口
+iptables -A INPUT -p tcp -m tcp --dport 9696 -j ACCEPT
+#保存修改
+ /etc/init.d/iptables save
+ 
