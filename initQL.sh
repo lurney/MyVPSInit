@@ -5,7 +5,7 @@ iptables -X        #清除预设表filter中使用者自定链中的规则
 iptables -P INPUT DROP          #注意，此命令执行完，远程SSH会掉线！！
 iptables -P OUTPUT ACCEPT
 iptables -P FORWARD DROP
-iptables -A INPUT -i lo -p all -j ACCEPT 
+iptables -A INPUT -i lo -j ACCEPT
 #开启SSH端口
 iptables -A INPUT -p tcp -m tcp --dport 16291 -j ACCEPT
 #开启Shadowsocks端口
