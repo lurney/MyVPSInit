@@ -4,7 +4,7 @@ iptables -X        #清除预设表filter中使用者自定链中的规则
 #设定预设规则：禁止进，禁止转发，允许出，允许回环网卡
 iptables -P INPUT DROP          #注意，此命令执行完，远程SSH会掉线！！
 iptables -P OUTPUT ACCEPT
-iptables -P FORWARD DROP
+iptables -P FORWARD ACCEPT
 iptables -A INPUT -i lo -p all -j ACCEPT 
 #开启SSH端口
 iptables -A INPUT -p tcp -m tcp --dport 16291 -j ACCEPT
