@@ -5,6 +5,11 @@ iptables -X        #清除预设表filter中使用者自定链中的规则
 iptables -Z		#清空计数器
 iptables -P INPUT ACCEPT
 iptables -P OUTPUT ACCEPT
+#设定预设规则：禁止进，禁止转发，允许出，允许回环网卡
+iptables -P INPUT DROP          #注意，此命令执行完，远程SSH会掉线！！
+iptables -P OUTPUT ACCEPT
+iptables -P FORWARD DROP
+iptables -A INPUT -i lo -j ACCEPT
 #开启SSH端口
 iptables -A INPUT -p tcp -m tcp --dport 16291 -j ACCEPT
 #开启Shadowsocks端口
@@ -35,11 +40,7 @@ iptables -A INPUT -p tcp --dport 10001 -j ACCEPT
 #允许状态检测
 iptables -A INPUT -p all -m state --state ESTABLISHED,RELATED -j ACCEPT
 iptables -A INPUT -p all -m state --state INVALID,NEW -j DROP
-#设定预设规则：禁止进，禁止转发，允许出，允许回环网卡
-iptables -P INPUT DROP          #注意，此命令执行完，远程SSH会掉线！！
-iptables -P OUTPUT ACCEPT
-iptables -P FORWARD DROP
-iptables -A INPUT -i lo -j ACCEPT
+
 #保存修改
  /etc/init.d/iptables save
  service iptables start
