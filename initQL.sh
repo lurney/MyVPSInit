@@ -30,6 +30,7 @@ iptables -A INPUT -p tcp --dport 25 -j ACCEPT
 iptables -A INPUT -p tcp -m tcp --dport 9696 -j ACCEPT
 #开启Seafile管理端口
 iptables -A INPUT -p tcp -m tcp --dport 8000 -j ACCEPT
+iptables -A INPUT -p tcp -m tcp --dport 8082 -j ACCEPT
 #允许状态检测
 iptables -A INPUT -p all -m state --state ESTABLISHED,RELATED -j ACCEPT
 iptables -A INPUT -p all -m state --state INVALID,NEW -j DROP
