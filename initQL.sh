@@ -47,4 +47,4 @@ iptables -A INPUT -p all -m state --state INVALID,NEW -j DROP
 
 #保存修改
  /etc/init.d/iptables save
- service iptables start
+ service iptables restart
