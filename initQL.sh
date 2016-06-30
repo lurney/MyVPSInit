@@ -16,7 +16,7 @@ iptables -A INPUT -p tcp -m tcp --dport 16291 -j ACCEPT
 # 开启Shadowsocks端口
 # iptables -A INPUT -p tcp -m tcp --dport 3389 -j ACCEPT
 iptables -A INPUT -p tcp -m tcp --dport 40000:41000 -j ACCEPT
-
+iptables -A INPUT -p udp -m udp --dport 40000:41000 -j ACCEPT
 #允许DNS
 iptables -A INPUT -p tcp -m tcp --dport 53 -j ACCEPT
 iptables -A INPUT -p udp -m udp --dport 53 -j ACCEPT
