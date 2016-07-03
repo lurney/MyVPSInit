@@ -42,8 +42,8 @@ iptables -A INPUT -p tcp -m tcp --dport 9696 -j ACCEPT
 #iptables -A INPUT -p tcp --dport 10001 -j ACCEPT
 
 #允许状态检测
-iptables -A INPUT -p all -m state --state ESTABLISHED,RELATED -j ACCEPT
-iptables -A INPUT -p all -m state --state INVALID,NEW -j DROP
+iptables -A INPUT -p all -m state --state NEW, ESTABLISHED,RELATED -j ACCEPT
+iptables -A INPUT -p all -m state --state INVALID -j DROP
 
 #保存修改
  /etc/init.d/iptables save
